@@ -13,7 +13,7 @@
     "mock": "node ./mock/server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "lixiaoyu",
   "license": "ISC",
   "dependencies": {
     "@babel/polyfill": "^7.4.3",
