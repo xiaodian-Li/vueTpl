@@ -18,7 +18,8 @@ const devServer = {
   port: 3000
 };
 module.exports = merge(baseConf, {
-  mode: "none",
+  // 将mode设置为development，启用webpack内置的优化
+  mode: "development",
   cache: true, // 启用缓存
   devtool: "eval-source-map",
   devServer,

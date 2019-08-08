@@ -16,7 +16,7 @@ module.exports = function(
   options = {
     env: "test",
     buildMode: "common",
-    browserslist: null
+    browserslist: nullsplitChunks
   }
 ) {
   let { env, buildMode, browserslist } = options;
@@ -73,23 +73,25 @@ module.exports = function(
     plugins.push(new CleanWebpackPlugin());
   }
   const prodConf = {
-    mode: "none",
+    // 启用production模式，启用该模式下内置的优化。
+    mode: "production",
     output: {
       filename
     },
     module: { rules },
     plugins,
     optimization: {
-      splitChunks: {
-        cacheGroups: {
-          vendors: {
-            test: /[\\/]node_modules[\\/]/,
-            name: "vendors",
-            chunks: "all",
-            reuseExistingChunk: true
-          }
-        }
-      },
+      // 与dll文件作用重复，删除splitChunks配置
+      // splitChunks: {
+      //   cacheGroups: {
+      //     vendors: {
+      //       test: /[\\/]node_modules[\\/]/,
+      //       name: "vendors",
+      //       chunks: "all",
+      //       reuseExistingChunk: true
+      //     }
+      //   }
+      // },
       runtimeChunk: "single"
     }
   };

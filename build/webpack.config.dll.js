@@ -3,7 +3,9 @@ var path = require("path");
 var webpack = require("webpack");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 module.exports = {
-  mode: "development",
+  // 将mode设置为production
+  // production模式下，webpack默认使用TerserPlugin对js进行压缩。
+  mode: "production",
   entry: {
     // 把 vue 模块放到一个单独的dll文件中
     vue: ["vue"]
