@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="title">欢迎使用项目模板！</h2>
+    <h2 class="title">测试cache欢迎使用项目模板！</h2>
     <p class="count">{{count}}</p>
     <button class="add" type="button" @click="add">add</button>
   </div>

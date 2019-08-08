@@ -10,11 +10,14 @@ const port = devServerOptions.port;
 const host = devServerOptions.host;
 server.listen(port, host, () => {
   let opts = process.argv.slice(2);
+  // 如果未指定配置文件，使用`test/e2e/nightwatch.conf.js
   if (opts.indexOf("--config") === -1) {
     opts = opts.concat(["--config", "test/e2e/nightwatch.conf.js"]);
   }
 
+  // 需要安装 cross-spawn
   const spawn = require("cross-spawn");
+  // 在子进程中启动 nightwatch
   const runner = spawn("./node_modules/.bin/nightwatch", opts, {
     stdio: "inherit"
   });

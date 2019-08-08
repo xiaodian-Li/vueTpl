@@ -19,6 +19,7 @@ const devServer = {
 };
 module.exports = merge(baseConf, {
   mode: "none",
+  cache: true, // 启用缓存
   devtool: "eval-source-map",
   devServer,
   module: {
