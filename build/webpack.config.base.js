@@ -5,6 +5,7 @@ const StyleLintPlugin = require("stylelint-webpack-plugin");
 const SpritesmithPlugin = require("webpack-spritesmith");
 const DebugPlugin = require("debugtool-webpack-plugin");
 const { templateFunction } = require("./util");
+const HardSourceWebpackPlugin = require("hard-source-webpack-plugin"); // 缓存编译过程中的中间结果
 
 const baseConf = {
   entry: { app: path.resolve(__dirname, "../src/app.js") },
@@ -36,6 +37,7 @@ const baseConf = {
     ]
   },
   plugins: [
+    new HardSourceWebpackPlugin(),
     new VueLoaderPlugin(),
     new DebugPlugin({ enable: true }),
     new HtmlWebpackPlugin({
