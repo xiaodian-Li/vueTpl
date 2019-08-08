@@ -10,7 +10,8 @@
     "server": "node server.js",
     "start": "webpack-dev-server --inline --progress --config build/webpack.config.dev.js",
     "dev": "concurrently \"npm run start\" \"npm run mock\"",
-    "mock": "node ./mock/server.js"
+    "mock": "node ./mock/server.js",
+    "dll": "webpack --config build/webpack.config.dll.js"
   },
   "keywords": [],
   "author": "lixiaoyu",
