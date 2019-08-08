@@ -26,7 +26,21 @@ module.exports = merge(baseConf, {
     rules: [
       configureCSSLoader(),
       configureBabelLoader(),
-      ...configureURLLoader()
+      ...configureURLLoader(),
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: [
+          // 在babel-loader之前添加thread-loader。
+          { loader: "thread-loader" },
+          {
+            loader: "babel-loader",
+            options: {
+              cacheDirectory: true
+            }
+          }
+        ]
+      }
     ]
   }
 });

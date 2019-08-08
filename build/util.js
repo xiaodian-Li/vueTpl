@@ -45,6 +45,7 @@ const configureCSSLoader = env => {
 // 配置babelloader
 const configureBabelLoader = (modern, browserlist) => {
   let options = {
+    cacheDirectory: true,
     babelrc: false,
     presets: [
       [
@@ -63,7 +64,11 @@ const configureBabelLoader = (modern, browserlist) => {
   let babelLoader = {
     test: /\.js$/,
     exclude: /node_modules/,
-    loader: "babel-loader"
+    // 在babel-loader之前添加thread-loader。多线程执行
+    use:[
+      "thread-loader",
+      {loader: "babel-loader"}
+    ]
   };
 
   if (modern) {
