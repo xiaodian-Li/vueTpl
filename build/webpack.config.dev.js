@@ -1,22 +1,19 @@
 const merge = require("webpack-merge");
 const baseConf = require("./webpack.config.base");
+const config = require("../app.config");
 const path = require("path");
-const {
-  configureBabelLoader,
-  configureURLLoader,
-  configureCSSLoader
-} = require("./util");
-const devServer = {
-  proxy: {
-    "/api": "http://localhost:8081"
-  },
+let devServer = {
+  proxy: config.proxy || {},
   contentBase: path.resolve(__dirname, "../dist"),
   hot: true,
+  clientLogLevel: "warning",
   compress: true,
   overlay: true,
-  open: true,
-  port: 3000
+  open: config.autoOpenBrowser || true,
+  port: config.devServerport || 3000
 };
+const {configureBabelLoader } = require("./util");
+
 module.exports = merge(baseConf, {
   // 将mode设置为development，启用webpack内置的优化
   mode: "development",
